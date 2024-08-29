@@ -57,6 +57,10 @@ contract DeganToken is ERC20 {
         emit Burned(msg.sender, amount);
     }
 
+    function transfer(address recipient, uint256 amount) public override returns (bool) {
+        return super.transfer(recipient, amount);
+    }
+
     function generateNFT(string memory name, string memory url, uint256 price) external onlyOwner {
         NFTs[name] = NFT({name: name, url: url, price: price, isAvailable: true});
         allNFTs.push(name);
